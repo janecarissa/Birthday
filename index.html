@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(#ffd6e8, #fff0f6);
+      padding: 40px;
+      text-align: center;
+      color: #d1436f;
+    }
+    .card {
+      background: #ffffff;
+      max-width: 650px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .heart {
+      font-size: 50px;
+      animation: pulse 1.5s infinite;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .hidden-message {
+      display: none;
+      font-size: 20px;
+      font-weight: 600;
+      color: #b03d63;
+      margin-top: 20px;
+    }
+    .button {
+      background: #ff7aa8;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    .button:hover {
+      background: #e35f90;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #b03d63;
+    }
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #ff7aa8;
+      animation: fall 3s linear infinite;
+      top: -10px;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(120vh) rotate(720deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="heart" onclick="showMessage()">💗</div>
+    <h1>Happy Birthday, Love! 🎉</h1>
+    <p>
+      You make my life brighter in every way. Thank you for being you.
+      This page is my tiny gift for your special day 💕
+    </p>
+
+    <button class="button" onclick="startConfetti()">Click for a Surprise 🎁</button>
+
+    <div id="message" class="hidden-message">
+      I love you endlessly — today, tomorrow, and always. 💗
+    </div>
+  </div>
+
+  <div class="footer">Made with love by Jane 💞</div>
+
+  <script>
+    function showMessage() {
+      document.getElementById('message').style.display = 'block';
+    }
+
+    function startConfetti() {
+      for (let i = 0; i < 80; i++) {
+        let confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = randomColor();
+        confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    function randomColor() {
+      const colors = ['#ff7aa8', '#ffb3d1', '#ffd6e8', '#ff8fab', '#ffc2dd'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
